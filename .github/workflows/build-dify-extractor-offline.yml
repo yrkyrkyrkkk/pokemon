@@ -1,0 +1,47 @@
+name: Build Dify Extractor Offline Package
+
+on:
+  push:
+    branches:
+      - build-dify-extractor-offline
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout helper
+        uses: actions/checkout@v4
+        with:
+          repository: junjiem/dify-plugin-repackaging
+          path: repack
+
+      - name: Prepare dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y unzip curl python3-pip
+          python3 -m pip install --user uv
+          chmod +x repack/plugin_repackaging.sh
+
+      - name: Build offline package
+        working-directory: repack
+        env:
+          PIP_MIRROR_URL: https://pypi.org/simple
+        run: |
+          ./plugin_repackaging.sh -p manylinux2014_x86_64 market langgenius dify_extractor 0.1.0
+          echo "Generated files:"
+          find . -maxdepth 2 -type f -name '*.difypkg' -ls
+
+      - name: Collect artifact
+        run: |
+          mkdir -p artifact
+          find repack -type f -name '*offline*.difypkg' -exec cp {} artifact/dify_extractor-0.1.0-offline.difypkg \;
+          test -f artifact/dify_extractor-0.1.0-offline.difypkg
+          ls -lh artifact/
+
+      - name: Upload offline package
+        uses: actions/upload-artifact@v4
+        with:
+          name: dify-extractor-offline
+          path: artifact/dify_extractor-0.1.0-offline.difypkg
+          retention-days: 3
