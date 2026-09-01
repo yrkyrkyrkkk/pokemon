@@ -10,38 +10,90 @@ jobs:
   build:
     runs-on: ubuntu-24.04
     steps:
-      - name: Checkout helper
+      - name: Checkout repackaging helper
         uses: actions/checkout@v4
         with:
           repository: junjiem/dify-plugin-repackaging
           path: repack
 
-      - name: Prepare dependencies
+      - name: Prepare tools
         run: |
           sudo apt-get update
           sudo apt-get install -y unzip curl python3-pip
-          python3 -m pip install --user uv
-          chmod +x repack/plugin_repackaging.sh
+          python3 -m pip install --break-system-packages packaging
+          chmod +x repack/dify-plugin-linux-amd64
 
-      - name: Build offline package
-        working-directory: repack
-        env:
-          PIP_MIRROR_URL: https://pypi.org/simple
+      - name: Download official Dify Extractor package
         run: |
-          ./plugin_repackaging.sh -p manylinux2014_x86_64 market langgenius dify_extractor 0.1.0
-          echo "Generated files:"
-          find . -maxdepth 2 -type f -name '*.difypkg' -ls
+          curl -fL 'https://marketplace.dify.ai/api/v1/plugins/langgenius/dify_extractor/0.1.0/download' -o dify_extractor-0.1.0.difypkg
+          rm -rf plugin
+          mkdir plugin
+          unzip -q dify_extractor-0.1.0.difypkg -d plugin
+          mkdir -p plugin/wheels
 
-      - name: Collect artifact
+      - name: Download exact Linux x86_64 wheels from uv.lock
         run: |
-          mkdir -p artifact
-          find repack -type f -name '*offline*.difypkg' -exec cp {} artifact/dify_extractor-0.1.0-offline.difypkg \;
-          test -f artifact/dify_extractor-0.1.0-offline.difypkg
-          ls -lh artifact/
+          python3 - <<'PY'
+          import os, tomllib, urllib.request
+          from packaging.tags import sys_tags
+          from packaging.utils import parse_wheel_filename
+
+          lock = tomllib.load(open('plugin/uv.lock', 'rb'))
+          compatible = set(sys_tags())
+          downloaded = []
+          skipped = []
+
+          for pkg in lock.get('package', []):
+              if pkg.get('name') == 'dify-extractor':
+                  continue
+              candidates = []
+              for wheel in pkg.get('wheels') or []:
+                  url = wheel['url']
+                  filename = url.rsplit('/', 1)[-1]
+                  try:
+                      _, _, _, tags = parse_wheel_filename(filename)
+                  except Exception:
+                      continue
+                  if tags & compatible:
+                      candidates.append((filename, url))
+              if not candidates:
+                  skipped.append((pkg.get('name'), pkg.get('version')))
+                  continue
+              filename, url = candidates[0]
+              target = os.path.join('plugin', 'wheels', filename)
+              print(f'Downloading {pkg["name"]}=={pkg["version"]}: {filename}')
+              urllib.request.urlretrieve(url, target)
+              downloaded.append(filename)
+
+          print(f'Downloaded {len(downloaded)} wheels')
+          print('Skipped:', skipped)
+          if len(downloaded) < 50:
+              raise SystemExit('Too few wheels downloaded; refusing to package')
+          PY
+
+      - name: Make runtime use bundled wheels only
+        run: |
+          cat >> plugin/pyproject.toml <<'EOF'
+
+          [tool.uv]
+          no-index = true
+          find-links = ["./wheels"]
+          prerelease = "allow"
+          EOF
+          # Remove lock so plugin-daemon resolves requirements from the local wheel directory.
+          rm -f plugin/uv.lock
+          echo 'Wheel count:'
+          find plugin/wheels -type f -name '*.whl' | wc -l
+          du -sh plugin/wheels
+
+      - name: Package offline plugin
+        run: |
+          ./repack/dify-plugin-linux-amd64 plugin package ./plugin -o ./dify_extractor-0.1.0-offline.difypkg --max-size 5120
+          ls -lh ./dify_extractor-0.1.0-offline.difypkg
 
       - name: Upload offline package
         uses: actions/upload-artifact@v4
         with:
           name: dify-extractor-offline
-          path: artifact/dify_extractor-0.1.0-offline.difypkg
+          path: dify_extractor-0.1.0-offline.difypkg
           retention-days: 3
