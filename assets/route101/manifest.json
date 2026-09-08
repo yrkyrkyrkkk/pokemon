@@ -1,0 +1,566 @@
+{
+  "version": 1,
+  "tileSize": 32,
+  "sourcePixelRatio": 2,
+  "assets": [
+    {
+      "id": "ground-0",
+      "file": "ground-0.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable"
+    },
+    {
+      "id": "ground-1",
+      "file": "ground-1.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable"
+    },
+    {
+      "id": "ground-2",
+      "file": "ground-2.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable"
+    },
+    {
+      "id": "dirt-00-0",
+      "file": "dirt-00-0.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable",
+      "autotileMask": 0,
+      "variant": 0
+    },
+    {
+      "id": "dirt-00-1",
+      "file": "dirt-00-1.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable",
+      "autotileMask": 0,
+      "variant": 1
+    },
+    {
+      "id": "dirt-01-0",
+      "file": "dirt-01-0.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable",
+      "autotileMask": 1,
+      "variant": 0
+    },
+    {
+      "id": "dirt-01-1",
+      "file": "dirt-01-1.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable",
+      "autotileMask": 1,
+      "variant": 1
+    },
+    {
+      "id": "dirt-02-0",
+      "file": "dirt-02-0.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable",
+      "autotileMask": 2,
+      "variant": 0
+    },
+    {
+      "id": "dirt-02-1",
+      "file": "dirt-02-1.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable",
+      "autotileMask": 2,
+      "variant": 1
+    },
+    {
+      "id": "dirt-03-0",
+      "file": "dirt-03-0.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable",
+      "autotileMask": 3,
+      "variant": 0
+    },
+    {
+      "id": "dirt-03-1",
+      "file": "dirt-03-1.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable",
+      "autotileMask": 3,
+      "variant": 1
+    },
+    {
+      "id": "dirt-04-0",
+      "file": "dirt-04-0.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable",
+      "autotileMask": 4,
+      "variant": 0
+    },
+    {
+      "id": "dirt-04-1",
+      "file": "dirt-04-1.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable",
+      "autotileMask": 4,
+      "variant": 1
+    },
+    {
+      "id": "dirt-05-0",
+      "file": "dirt-05-0.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable",
+      "autotileMask": 5,
+      "variant": 0
+    },
+    {
+      "id": "dirt-05-1",
+      "file": "dirt-05-1.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable",
+      "autotileMask": 5,
+      "variant": 1
+    },
+    {
+      "id": "dirt-06-0",
+      "file": "dirt-06-0.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable",
+      "autotileMask": 6,
+      "variant": 0
+    },
+    {
+      "id": "dirt-06-1",
+      "file": "dirt-06-1.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable",
+      "autotileMask": 6,
+      "variant": 1
+    },
+    {
+      "id": "dirt-07-0",
+      "file": "dirt-07-0.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable",
+      "autotileMask": 7,
+      "variant": 0
+    },
+    {
+      "id": "dirt-07-1",
+      "file": "dirt-07-1.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable",
+      "autotileMask": 7,
+      "variant": 1
+    },
+    {
+      "id": "dirt-08-0",
+      "file": "dirt-08-0.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable",
+      "autotileMask": 8,
+      "variant": 0
+    },
+    {
+      "id": "dirt-08-1",
+      "file": "dirt-08-1.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable",
+      "autotileMask": 8,
+      "variant": 1
+    },
+    {
+      "id": "dirt-09-0",
+      "file": "dirt-09-0.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable",
+      "autotileMask": 9,
+      "variant": 0
+    },
+    {
+      "id": "dirt-09-1",
+      "file": "dirt-09-1.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable",
+      "autotileMask": 9,
+      "variant": 1
+    },
+    {
+      "id": "dirt-0a-0",
+      "file": "dirt-0a-0.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable",
+      "autotileMask": 10,
+      "variant": 0
+    },
+    {
+      "id": "dirt-0a-1",
+      "file": "dirt-0a-1.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable",
+      "autotileMask": 10,
+      "variant": 1
+    },
+    {
+      "id": "dirt-0b-0",
+      "file": "dirt-0b-0.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable",
+      "autotileMask": 11,
+      "variant": 0
+    },
+    {
+      "id": "dirt-0b-1",
+      "file": "dirt-0b-1.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable",
+      "autotileMask": 11,
+      "variant": 1
+    },
+    {
+      "id": "dirt-0c-0",
+      "file": "dirt-0c-0.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable",
+      "autotileMask": 12,
+      "variant": 0
+    },
+    {
+      "id": "dirt-0c-1",
+      "file": "dirt-0c-1.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable",
+      "autotileMask": 12,
+      "variant": 1
+    },
+    {
+      "id": "dirt-0d-0",
+      "file": "dirt-0d-0.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable",
+      "autotileMask": 13,
+      "variant": 0
+    },
+    {
+      "id": "dirt-0d-1",
+      "file": "dirt-0d-1.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable",
+      "autotileMask": 13,
+      "variant": 1
+    },
+    {
+      "id": "dirt-0e-0",
+      "file": "dirt-0e-0.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable",
+      "autotileMask": 14,
+      "variant": 0
+    },
+    {
+      "id": "dirt-0e-1",
+      "file": "dirt-0e-1.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable",
+      "autotileMask": 14,
+      "variant": 1
+    },
+    {
+      "id": "dirt-0f-0",
+      "file": "dirt-0f-0.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable",
+      "autotileMask": 15,
+      "variant": 0
+    },
+    {
+      "id": "dirt-0f-1",
+      "file": "dirt-0f-1.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable",
+      "autotileMask": 15,
+      "variant": 1
+    },
+    {
+      "id": "tall-grass-0",
+      "file": "tall-grass-0.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "encounter",
+      "encounters": "pallet-plus-1-or-2-levels"
+    },
+    {
+      "id": "tall-grass-1",
+      "file": "tall-grass-1.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "encounter",
+      "encounters": "pallet-plus-1-or-2-levels"
+    },
+    {
+      "id": "tall-grass-2",
+      "file": "tall-grass-2.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "encounter",
+      "encounters": "pallet-plus-1-or-2-levels"
+    },
+    {
+      "id": "flowers",
+      "file": "flowers.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable"
+    },
+    {
+      "id": "water-center",
+      "file": "water-center.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "surf"
+    },
+    {
+      "id": "water-n",
+      "file": "water-n.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "surf"
+    },
+    {
+      "id": "water-s",
+      "file": "water-s.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "surf"
+    },
+    {
+      "id": "water-w",
+      "file": "water-w.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "surf"
+    },
+    {
+      "id": "water-e",
+      "file": "water-e.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "surf"
+    },
+    {
+      "id": "water-nw",
+      "file": "water-nw.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "surf"
+    },
+    {
+      "id": "water-ne",
+      "file": "water-ne.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "surf"
+    },
+    {
+      "id": "water-sw",
+      "file": "water-sw.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "surf"
+    },
+    {
+      "id": "water-se",
+      "file": "water-se.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "surf"
+    },
+    {
+      "id": "tree-0",
+      "file": "tree-0.png",
+      "sizeCells": [
+        1,
+        2
+      ],
+      "collisionCells": [
+        [
+          0,
+          1
+        ]
+      ],
+      "behavior": "blocked"
+    },
+    {
+      "id": "tree-1",
+      "file": "tree-1.png",
+      "sizeCells": [
+        1,
+        2
+      ],
+      "collisionCells": [
+        [
+          0,
+          1
+        ]
+      ],
+      "behavior": "blocked"
+    },
+    {
+      "id": "ledge-left",
+      "file": "ledge-left.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "one-way",
+      "jumpDirection": "down"
+    },
+    {
+      "id": "ledge-middle",
+      "file": "ledge-middle.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "one-way",
+      "jumpDirection": "down"
+    },
+    {
+      "id": "ledge-right",
+      "file": "ledge-right.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "one-way",
+      "jumpDirection": "down"
+    }
+  ]
+}

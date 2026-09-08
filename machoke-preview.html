@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>豪力 · 三版对比</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#102b2c;color:#edf3e9;font:16px/1.6 system-ui,sans-serif}main{max-width:1440px;margin:auto;padding:32px 24px}header{display:flex;align-items:center;justify-content:space-between;gap:20px}h1{font-size:28px;margin:0}a{color:#bde8bb}p{color:#bdcfc7}section{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:24px 0}article{background:#1b3a38;border:1px solid #48635a;border-radius:16px;overflow:hidden}h2{font-size:20px;margin:16px 18px 8px}.room{width:100%;aspect-ratio:1/1;position:relative;overflow:hidden;background:#815c3a}.room>img{width:100%;height:100%;object-fit:cover}canvas{position:absolute;inset:0;width:100%;height:100%}article p{min-height:76px;margin:14px 18px}.controls{display:flex;gap:24px;align-items:center;flex-wrap:wrap;padding:16px 0}label{display:flex;gap:12px;align-items:center}button{font:inherit;color:#102b2c;background:#d2edb2;border:0;border-radius:8px;padding:9px 18px;cursor:pointer}input{accent-color:#d2edb2;width:180px}.note{font-size:14px}#status{color:#ffda9f} @media(max-width:800px){section{grid-template-columns:1fr}main{max-width:580px}header{align-items:flex-start}.room{aspect-ratio:4/3}}
+</style>
+<main><header><h1>豪力 · 三版对比</h1><a href="./?previewScene=viridian-home-a&build=viridian-remaster-v3">返回交换之家 →</a></header>
+<p>相同房间、相同站位、相同角色高度。拖动尺寸滑块，比较放大后的清晰度。</p>
+<div class="controls"><label>角色高度 <input id="size" type="range" min="44" max="100" value="64"><output id="value">64 px</output></label><button id="play" aria-pressed="true">暂停动态</button></div>
+<section>
+<article><h2>① 经典像素版</h2><div class="room"><img src="./assets/viridian-city/trade-home-hd.webp" alt="交换之家室内"><canvas id="pixel" aria-label="经典像素豪力"></canvas></div><p>现有游戏素材，保留清晰像素边缘。默认从原来的 44 调大到 64 像素。</p></article>
+<article><h2>② 高清插画版</h2><div class="room"><img src="./assets/viridian-city/trade-home-hd.webp" alt="相同室内背景"><canvas id="hd" aria-label="高清插画豪力"></canvas></div><p>现有官方插画，线条更细腻。此图是插画站姿，尚未改成俯视游戏角色。</p></article>
+<article><h2>③ 轻微动态版</h2><div class="room"><img src="./assets/viridian-city/trade-home-hd.webp" alt="相同室内背景"><canvas id="idle" aria-label="呼吸摇摆效果豪力"></canvas></div><p>同一张高清插画，实时模拟呼吸与轻微摇摆；没有独立握拳动作。</p></article>
+</section><p id="status" role="status">正在载入对比素材…</p><p class="note">高清素材来自 <a href="https://github.com/PokeAPI/sprites/tree/master/sprites/pokemon/other/official-artwork" target="_blank" rel="noreferrer">PokéAPI 素材库</a>，需要联网加载。这里只比较外观，游戏中的形象尚未替换。</p></main>
+<script>
+const size=document.querySelector('#size'),value=document.querySelector('#value'),play=document.querySelector('#play');
+let running=!matchMedia('(prefers-reduced-motion: reduce)').matches,clock=0,last=performance.now();
+function button(){play.textContent=running?'暂停动态':'播放动态';play.setAttribute('aria-pressed',String(running))}button();play.onclick=()=>{running=!running;button()};size.oninput=()=>value.textContent=size.value+' px';
+function load(src){return new Promise((resolve,reject)=>{const im=new Image();im.crossOrigin='anonymous';im.onload=()=>resolve(im);im.onerror=()=>reject(new Error('素材加载失败，请检查网络后刷新。'));im.src=src})}
+function bounds(im){const c=document.createElement('canvas');c.width=im.width;c.height=im.height;const x=c.getContext('2d');x.drawImage(im,0,0);const d=x.getImageData(0,0,c.width,c.height).data;let l=c.width,t=c.height,r=0,b=0;for(let y=0;y<c.height;y++)for(let a=0;a<c.width;a++)if(d[(y*c.width+a)*4+3]>16){l=Math.min(l,a);r=Math.max(r,a);t=Math.min(t,y);b=Math.max(b,y)}return [l,t,r-l+1,b-t+1]}
+Promise.all([load('./assets/pokemon-pixel/front/67.png'),load('https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/67.png')]).then(([pixel,hd])=>{
+const entries=[['pixel',pixel],['hd',hd],['idle',hd]].map(([id,im])=>({c:document.getElementById(id),im,box:bounds(im),id}));document.querySelector('#status').textContent='三版已载入，可调整尺寸或暂停动画。';
+function frame(now){if(running)clock+=(now-last)/1000;last=now;for(const {c,im,box,id} of entries){const rect=c.getBoundingClientRect(),dpr=Math.min(devicePixelRatio||1,3),w=Math.round(rect.width*dpr),h=Math.round(rect.height*dpr);if(c.width!==w||c.height!==h){c.width=w;c.height=h}const ctx=c.getContext('2d');ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,rect.width,rect.height);const scale=rect.width/384,height=Number(size.value)*scale,width=height*box[2]/box[3],x=rect.width*.5,y=rect.height*.60;ctx.fillStyle='#18242255';ctx.beginPath();ctx.ellipse(x,y,width*.33,4*scale,0,0,Math.PI*2);ctx.fill();ctx.save();ctx.translate(x,y);if(id==='idle'){ctx.rotate(Math.sin(clock*1.6)*.018);ctx.scale(1-Math.sin(clock*2.4)*.009,1+Math.sin(clock*2.4)*.018)}ctx.imageSmoothingEnabled=id!=='pixel';ctx.imageSmoothingQuality='high';ctx.drawImage(im,...box,-width/2,-height,width,height);ctx.restore()}requestAnimationFrame(frame)}requestAnimationFrame(frame)
+}).catch(e=>document.querySelector('#status').textContent=e.message);
+</script></html>

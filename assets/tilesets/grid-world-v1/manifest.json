@@ -1,0 +1,859 @@
+{
+  "version": 1,
+  "tileSize": 32,
+  "sourcePixelRatio": 2,
+  "rules": {
+    "passable": "walk",
+    "encounter": "walk-and-wild-encounter",
+    "surf": "blocked-unless-surfing",
+    "blocked": "never-walk",
+    "breakable": "blocked-until-rock-smash",
+    "one-way": "directional-jump-only",
+    "portal": "auto-transition-zone"
+  },
+  "terrain": [
+    {
+      "id": "grass-a",
+      "file": "terrain/grass-a.png",
+      "grid": [
+        0,
+        0
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable"
+    },
+    {
+      "id": "grass-b",
+      "file": "terrain/grass-b.png",
+      "grid": [
+        1,
+        0
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable"
+    },
+    {
+      "id": "grass-tuft-a",
+      "file": "terrain/grass-tuft-a.png",
+      "grid": [
+        2,
+        0
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable"
+    },
+    {
+      "id": "grass-tuft-b",
+      "file": "terrain/grass-tuft-b.png",
+      "grid": [
+        3,
+        0
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable"
+    },
+    {
+      "id": "tall-grass-a",
+      "file": "terrain/tall-grass-a.png",
+      "grid": [
+        4,
+        0
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "encounter",
+      "overlaySource": "terrain/tall-grass-overlay.png"
+    },
+    {
+      "id": "tall-grass-b",
+      "file": "terrain/tall-grass-b.png",
+      "grid": [
+        5,
+        0
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "encounter",
+      "overlaySource": "terrain/tall-grass-overlay-mirror.png"
+    },
+    {
+      "id": "tall-grass-edge",
+      "file": "terrain/tall-grass-edge.png",
+      "grid": [
+        0,
+        1
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "encounter",
+      "overlaySource": "terrain/tall-grass-overlay.png"
+    },
+    {
+      "id": "tall-grass-patch",
+      "file": "terrain/tall-grass-patch.png",
+      "grid": [
+        1,
+        1
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "encounter",
+      "overlaySource": "terrain/tall-grass-overlay-mirror.png"
+    },
+    {
+      "id": "tall-grass-c",
+      "file": "terrain/tall-grass-c.png",
+      "grid": [
+        2,
+        1
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "encounter",
+      "overlaySource": "terrain/tall-grass-overlay.png"
+    },
+    {
+      "id": "tall-grass-d",
+      "file": "terrain/tall-grass-d.png",
+      "grid": [
+        3,
+        1
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "encounter",
+      "overlaySource": "terrain/tall-grass-overlay-mirror.png"
+    },
+    {
+      "id": "tall-grass-e",
+      "file": "terrain/tall-grass-e.png",
+      "grid": [
+        4,
+        1
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "encounter",
+      "overlaySource": "terrain/tall-grass-overlay.png"
+    },
+    {
+      "id": "tall-grass-f",
+      "file": "terrain/tall-grass-f.png",
+      "grid": [
+        5,
+        1
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "encounter",
+      "overlaySource": "terrain/tall-grass-overlay-mirror.png"
+    },
+    {
+      "id": "dirt-path-a",
+      "file": "terrain/dirt-path-a.png",
+      "grid": [
+        0,
+        2
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable"
+    },
+    {
+      "id": "dirt-path-b",
+      "file": "terrain/dirt-path-b.png",
+      "grid": [
+        1,
+        2
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable"
+    },
+    {
+      "id": "dirt-path-c",
+      "file": "terrain/dirt-path-c.png",
+      "grid": [
+        2,
+        2
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable"
+    },
+    {
+      "id": "dirt-path-d",
+      "file": "terrain/dirt-path-d.png",
+      "grid": [
+        3,
+        2
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable"
+    },
+    {
+      "id": "stone-path-a",
+      "file": "terrain/stone-path-a.png",
+      "grid": [
+        4,
+        2
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable"
+    },
+    {
+      "id": "stone-path-b",
+      "file": "terrain/stone-path-b.png",
+      "grid": [
+        5,
+        2
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable"
+    },
+    {
+      "id": "mud-path-a",
+      "file": "terrain/mud-path-a.png",
+      "grid": [
+        0,
+        3
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable"
+    },
+    {
+      "id": "mud-path-b",
+      "file": "terrain/mud-path-b.png",
+      "grid": [
+        1,
+        3
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable"
+    },
+    {
+      "id": "flowers-three",
+      "file": "terrain/flowers-three.png",
+      "grid": [
+        2,
+        3
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable"
+    },
+    {
+      "id": "water-a",
+      "file": "terrain/water-a.png",
+      "grid": [
+        3,
+        3
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "surf"
+    },
+    {
+      "id": "water-b",
+      "file": "terrain/water-b.png",
+      "grid": [
+        4,
+        3
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "surf"
+    },
+    {
+      "id": "water-c",
+      "file": "terrain/water-c.png",
+      "grid": [
+        5,
+        3
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "surf"
+    },
+    {
+      "id": "water-bank-n",
+      "file": "terrain/water-bank-n.png",
+      "grid": [
+        0,
+        4
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "surf"
+    },
+    {
+      "id": "water-bank-s",
+      "file": "terrain/water-bank-s.png",
+      "grid": [
+        1,
+        4
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "surf"
+    },
+    {
+      "id": "water-bank-w",
+      "file": "terrain/water-bank-w.png",
+      "grid": [
+        2,
+        4
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "surf"
+    },
+    {
+      "id": "water-bank-e",
+      "file": "terrain/water-bank-e.png",
+      "grid": [
+        3,
+        4
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "surf"
+    },
+    {
+      "id": "water-corner-nw",
+      "file": "terrain/water-corner-nw.png",
+      "grid": [
+        4,
+        4
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "surf"
+    },
+    {
+      "id": "water-corner-ne",
+      "file": "terrain/water-corner-ne.png",
+      "grid": [
+        5,
+        4
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "surf"
+    },
+    {
+      "id": "cliff-face",
+      "file": "terrain/cliff-face.png",
+      "grid": [
+        0,
+        5
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "blocked"
+    },
+    {
+      "id": "cliff-face-deep",
+      "file": "terrain/cliff-face-deep.png",
+      "grid": [
+        1,
+        5
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "blocked"
+    },
+    {
+      "id": "cliff-inner-a",
+      "file": "terrain/cliff-inner-a.png",
+      "grid": [
+        2,
+        5
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "blocked"
+    },
+    {
+      "id": "cliff-inner-b",
+      "file": "terrain/cliff-inner-b.png",
+      "grid": [
+        3,
+        5
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "blocked"
+    },
+    {
+      "id": "cliff-outer-a",
+      "file": "terrain/cliff-outer-a.png",
+      "grid": [
+        4,
+        5
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "blocked"
+    },
+    {
+      "id": "cliff-outer-b",
+      "file": "terrain/cliff-outer-b.png",
+      "grid": [
+        5,
+        5
+      ],
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "blocked"
+    },
+    {
+      "id": "water-corner-sw",
+      "file": "terrain/water-corner-sw.png",
+      "derivedFrom": "grass-a+water-a",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "surf"
+    },
+    {
+      "id": "water-corner-se",
+      "file": "terrain/water-corner-se.png",
+      "derivedFrom": "grass-a+water-a",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "surf"
+    },
+    {
+      "id": "clearing-ground-a",
+      "file": "terrain/clearing-ground-a.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable",
+      "source": "reference-clearing-v1/clearing-ground-master.png"
+    },
+    {
+      "id": "tall-grass-field-clearing",
+      "file": "terrain/tall-grass-field-clearing.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "encounter",
+      "source": "tall-grass-clump-transparent-v3.png",
+      "tiling": "periodic-edge-to-edge"
+    }
+  ],
+  "objects": [
+    {
+      "id": "tree-a",
+      "file": "objects/tree-a.png",
+      "sizeCells": [
+        2,
+        2
+      ],
+      "behavior": "blocked"
+    },
+    {
+      "id": "tree-b",
+      "file": "objects/tree-b.png",
+      "sizeCells": [
+        2,
+        2
+      ],
+      "behavior": "blocked"
+    },
+    {
+      "id": "tree-c",
+      "file": "objects/tree-c.png",
+      "sizeCells": [
+        2,
+        2
+      ],
+      "behavior": "blocked"
+    },
+    {
+      "id": "tree-d",
+      "file": "objects/tree-d.png",
+      "sizeCells": [
+        2,
+        2
+      ],
+      "behavior": "blocked"
+    },
+    {
+      "id": "conifer-a",
+      "file": "objects/conifer-a.png",
+      "sizeCells": [
+        1,
+        2
+      ],
+      "behavior": "blocked"
+    },
+    {
+      "id": "conifer-b",
+      "file": "objects/conifer-b.png",
+      "sizeCells": [
+        1,
+        2
+      ],
+      "behavior": "blocked"
+    },
+    {
+      "id": "shrub-a",
+      "file": "objects/shrub-a.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "blocked"
+    },
+    {
+      "id": "shrub-b",
+      "file": "objects/shrub-b.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "blocked"
+    },
+    {
+      "id": "shrub-c",
+      "file": "objects/shrub-c.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "blocked"
+    },
+    {
+      "id": "flowers-three",
+      "file": "objects/flowers-three.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable"
+    },
+    {
+      "id": "rock-small",
+      "file": "objects/rock-small.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "blocked"
+    },
+    {
+      "id": "rock-smash",
+      "file": "objects/rock-smash.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "breakable"
+    },
+    {
+      "id": "fence-white-h",
+      "file": "objects/fence-white-h.png",
+      "sizeCells": [
+        2,
+        1
+      ],
+      "behavior": "blocked"
+    },
+    {
+      "id": "fence-white-v",
+      "file": "objects/fence-white-v.png",
+      "sizeCells": [
+        1,
+        2
+      ],
+      "behavior": "blocked"
+    },
+    {
+      "id": "fence-white-corner",
+      "file": "objects/fence-white-corner.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "blocked"
+    },
+    {
+      "id": "fence-wood-h",
+      "file": "objects/fence-wood-h.png",
+      "sizeCells": [
+        2,
+        1
+      ],
+      "behavior": "blocked"
+    },
+    {
+      "id": "fence-wood-v",
+      "file": "objects/fence-wood-v.png",
+      "sizeCells": [
+        1,
+        2
+      ],
+      "behavior": "blocked"
+    },
+    {
+      "id": "fence-wood-corner",
+      "file": "objects/fence-wood-corner.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "blocked"
+    },
+    {
+      "id": "sign",
+      "file": "objects/sign.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "blocked"
+    },
+    {
+      "id": "streetlamp",
+      "file": "objects/streetlamp.png",
+      "sizeCells": [
+        1,
+        2
+      ],
+      "behavior": "blocked"
+    },
+    {
+      "id": "bench",
+      "file": "objects/bench.png",
+      "sizeCells": [
+        2,
+        1
+      ],
+      "behavior": "blocked"
+    },
+    {
+      "id": "mailbox",
+      "file": "objects/mailbox.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "blocked"
+    },
+    {
+      "id": "trash-can",
+      "file": "objects/trash-can.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "blocked"
+    },
+    {
+      "id": "ledge",
+      "file": "objects/ledge.png",
+      "sizeCells": [
+        2,
+        1
+      ],
+      "behavior": "one-way"
+    },
+    {
+      "id": "cave-entrance",
+      "file": "objects/cave-entrance.png",
+      "sizeCells": [
+        2,
+        2
+      ],
+      "behavior": "portal"
+    },
+    {
+      "id": "stairs",
+      "file": "objects/stairs.png",
+      "sizeCells": [
+        2,
+        2
+      ],
+      "behavior": "portal"
+    },
+    {
+      "id": "wood-bridge",
+      "file": "objects/wood-bridge.png",
+      "sizeCells": [
+        2,
+        2
+      ],
+      "behavior": "passable"
+    },
+    {
+      "id": "flowers-three-clearing",
+      "file": "objects/flowers-three-clearing.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "passable",
+      "source": "reference-clearing-v1/flowers-three-transparent.png"
+    },
+    {
+      "id": "tree-round-clearing",
+      "file": "objects/tree-round-clearing.png",
+      "sizeCells": [
+        2,
+        2
+      ],
+      "behavior": "blocked",
+      "collisionCells": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "source": "reference-clearing-v1/tree-round-transparent.png"
+    },
+    {
+      "id": "one-way-ledge-left-v1",
+      "file": "objects/one-way-ledge-left-v1.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "one-way",
+      "jumpDirection": "down",
+      "connections": [
+        "right"
+      ],
+      "source": "route101-original-inspired-v1"
+    },
+    {
+      "id": "one-way-ledge-middle-v1",
+      "file": "objects/one-way-ledge-middle-v1.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "one-way",
+      "jumpDirection": "down",
+      "connections": [
+        "left",
+        "right"
+      ],
+      "source": "route101-original-inspired-v1"
+    },
+    {
+      "id": "one-way-ledge-right-v1",
+      "file": "objects/one-way-ledge-right-v1.png",
+      "sizeCells": [
+        1,
+        1
+      ],
+      "behavior": "one-way",
+      "jumpDirection": "down",
+      "connections": [
+        "left"
+      ],
+      "source": "route101-original-inspired-v1"
+    }
+  ]
+}

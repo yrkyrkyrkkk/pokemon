@@ -1,0 +1,67 @@
+{
+  "id": "route101-v9",
+  "version": 9,
+  "sourceTileSize": 64,
+  "runtimeTileSize": 32,
+  "atlasColumns": 8,
+  "atlasRows": 12,
+  "metatileCount": 90,
+  "rendering": "finite reusable metatile catalog with neighbor-mask autotiling",
+  "indices": {
+    "grassVariants": [
+      0,
+      3
+    ],
+    "dirtAutotiles": [
+      4,
+      19
+    ],
+    "tallGrassAutotiles": [
+      20,
+      35
+    ],
+    "waterAutotiles": [
+      36,
+      51
+    ],
+    "forestAutotiles": [
+      52,
+      67
+    ],
+    "ledge": {
+      "left": 68,
+      "middle": [
+        69,
+        70
+      ],
+      "right": 71
+    },
+    "stairs": {
+      "left": 72,
+      "right": 73
+    },
+    "dirtInteriorVariants": [
+      74,
+      77
+    ],
+    "tallGrassInteriorVariants": [
+      78,
+      81
+    ],
+    "waterInteriorVariants": [
+      82,
+      85
+    ],
+    "forestInteriorVariants": [
+      86,
+      89
+    ]
+  },
+  "objects": [
+    "boulder.png",
+    "flowers.png",
+    "stump.png",
+    "sapling.png"
+  ],
+  "ruleSource": "app/data/route101-map.json + app/TilemapEngine.ts"
+}

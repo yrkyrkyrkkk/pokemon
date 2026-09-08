@@ -1,0 +1,18 @@
+{
+  "version": 7,
+  "tileSize": 32,
+  "mapWidth": 24,
+  "mapHeight": 21,
+  "tileCount": 504,
+  "atlasColumns": 32,
+  "atlasRows": 16,
+  "atlas": "route101-master-atlas-v7.webp",
+  "atlasSha256": "97ea87d74fa4279af1aa53fb449f185984768e95cb0e5eef33fe21df56ccca8c",
+  "sourceRole": "generated terrain-only art basis",
+  "rendering": "504 independently addressed 32x32 atlas cells",
+  "layers": [
+    "visual-index-layer",
+    "semantic-terrain-and-collision-layer",
+    "actors-and-effects-layer"
+  ]
+}

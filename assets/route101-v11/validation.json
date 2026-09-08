@@ -1,0 +1,16 @@
+{
+  "roadConnectedNorthToSouth": true,
+  "roadCells": 811,
+  "roadDisconnectedCells": 0,
+  "playerBoxRoadConnected": true,
+  "playerSafeRoadCenters": 646,
+  "encounterGrassPatches": 5,
+  "encounterGrassCells": 1910,
+  "pondComponents": 1,
+  "pondCells": 99,
+  "pondBankCells": 74,
+  "pondBoundaryClosed": true,
+  "rockComponents": 9,
+  "rockCells": 120,
+  "unknownCells": 0
+}
